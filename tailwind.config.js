@@ -18,15 +18,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        "color-primary": "var(--color-primary)",
-        "color-secondary": "var(--color-secondary)",
-        "color-orange": "var(--color-orange)",
-        "color-dark-blue": "var(--color-dark-blue)",
-        "color-light-blue": "var(--light-blue)",
-        "color-dark": "var(--color-dark)",
-        "color-grey": "var(--color-grey)",
-        "color-text": "var(--color-text)",
-        "color-white": "var(--color-white)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
