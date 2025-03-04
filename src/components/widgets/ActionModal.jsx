@@ -12,23 +12,29 @@ import {
   } from "@/components/ui/alert-dialog"
   
 
-
-
-export default function ActionModal() {
+export default function ActionModal({
+    childern,
+    trigger, title, desc, btnText, onClick, open, setOpen
+}) {
   return (
-    <AlertDialog>
-  <AlertDialogTrigger>Open</AlertDialogTrigger>
+    <AlertDialog open={open} onOpenChange={setOpen}>
+  <AlertDialogTrigger>
+    {trigger}</AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogTitle>{title}</AlertDialogTitle>
       <AlertDialogDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+      {desc}
       </AlertDialogDescription>
+      
     </AlertDialogHeader>
+    {childern}
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
+      {btnText && (
+        <AlertDialogAction onClick = {onClick}> {btnText}
+        </AlertDialogAction>
+      )}
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
