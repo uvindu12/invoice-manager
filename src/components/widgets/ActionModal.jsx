@@ -13,7 +13,7 @@ import {
   
 
 export default function ActionModal({
-    childern,
+    children,
     trigger, title, desc, btnText, onClick, open, setOpen
 }) {
   return (
@@ -28,7 +28,7 @@ export default function ActionModal({
       </AlertDialogDescription>
       
     </AlertDialogHeader>
-    {childern}
+    {children}
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
       {btnText && (
