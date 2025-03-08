@@ -18,7 +18,7 @@ export default function ActionModal({
 }) {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-  <AlertDialogTrigger acChild>
+  <AlertDialogTrigger >
     {trigger}</AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>

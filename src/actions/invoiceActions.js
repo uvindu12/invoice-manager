@@ -1,9 +1,9 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { connectMongoDB } from "@/config/db";
-import Invoice from "@/models/Invoice";
-import { revalidatePath } from "next/cache";
+import { connectMongoDB } from "@/lib/mongodb";
+import Invoice from "@/models/InvoiceModel";
+
 
 export const getErrorMessages = (error) => {
     let message;
@@ -27,7 +27,7 @@ export const createInvoice =async (formData) => {
             return {
                 error : "All fields are required",
             };
-           
+            
         }
         await connectMongoDB ()
 

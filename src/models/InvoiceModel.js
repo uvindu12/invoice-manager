@@ -2,21 +2,21 @@ import mongoose, { Schema, models } from "mongoose";
 
 const invoiceModel = new Schema ({
     customer : {
-        type : object,
+        type : Object ,
         required: true
     },
     amount: {
-        trype: String,
+        type: String,
         trim: true,
         required: true,
     },
     status: {
-        trype: String,
+        type: String,
         default: "Unpaid",
         required: true,
     },
     sent: {
-        trype: Number,
+        type: Number,
         default: 0,
         required: true
     },

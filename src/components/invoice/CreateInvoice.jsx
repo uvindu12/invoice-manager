@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { LoadingButton } from "../widgets/Loader";
+import { useRouter, useSearchParams } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
 
 import {
   Select,
@@ -28,6 +30,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
+import { createInvoice } from "@/actions/invoiceActions";
 
 const customers = [
   {
@@ -65,6 +68,10 @@ const formSchema = z.object({
 export default function CreateInvoice() {
   const [open, setOpen] = useState(false);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,8 +83,31 @@ export default function CreateInvoice() {
 
   const isLoading = form.formState.isSubmitting;
 
-  function onSubmit(values) {
+  async function onSubmit(values) {
     console.log(values);
+    const { name, amount, status } = values;
+    const customer = customers.find ((c) => c.name === name);
+    const formData = {
+      amount,
+      customer,
+      status,
+      id: id ? id : ""
+    };
+    if (id) {
+      // Update Invoice
+    } else {
+      //Create Invoice
+      const res = await createInvoice(formData);
+      console.log(res);
+
+      if (res.error) {
+        toast.error(res.error);
+      }
+      if (res?.message) {
+        toast.success(res.message);
+        router.push("/");
+      }
+    }
   }
 
   return (
